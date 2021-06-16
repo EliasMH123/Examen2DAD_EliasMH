@@ -1,0 +1,10 @@
+import {Router} from 'express';
+const router=Router();
+import * as mtrCtr from '../controllers/venta.controller';
+const {checkToken}=require('../auth/token_validation');
+router.get('/',checkToken,mtrCtr.readAllVenta);
+router.get('/:id',checkToken,mtrCtr.readVenta);
+router.post('/',checkToken,mtrCtr.createVenta);
+router.delete('/:id',checkToken,mtrCtr.delVenta);
+router.put('/:id',checkToken,mtrCtr.updateVenta);
+export default router;

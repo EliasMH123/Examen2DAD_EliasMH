@@ -1,0 +1,10 @@
+import {Router} from 'express';
+const router=Router();
+import * as dtlCtr from '../controllers/detalle.controller';
+const {checkToken}=require('../auth/token_validation');
+router.get('/',checkToken,dtlCtr.readAllDetails);
+router.get('/:id',checkToken,dtlCtr.readDetails);
+router.post('/',checkToken,dtlCtr.createDetail);
+router.delete('/:id',checkToken,dtlCtr.dellDetail);
+router.put('/:id',checkToken,dtlCtr.updateDetail);
+export default router;
